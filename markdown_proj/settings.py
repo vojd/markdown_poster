@@ -96,6 +96,8 @@ INSTALLED_APPS = (
     'south',
 
     'markdown_proj.apps.markdown',
+    'markdown_proj.apps.blog',
+
 
 )
 
