@@ -1,6 +1,6 @@
 import os
 from django.utils.unittest.case import TestCase
-from markdown_proj.apps.markdown.models import MarkdownDocument
+from markdown_proj.apps.markdown.models import MarkdownDocument, MarkdownDocumentHandler
 
 class MarkdownTestCase(TestCase):
 
@@ -19,7 +19,20 @@ class MarkdownTestCase(TestCase):
         from django.conf import settings
         md = MarkdownDocument.objects.create(
             document=os.path.abspath('test_markdown.md'))
-        
+
+        # TODO: Do the actual test ;)
+
+    def test_document_handler(self):
+        """ Test the MarkdownDocumentHandler class functionality """
+
+
+        document = os.path.join(os.path.dirname(__file__), 'test_markdown.md')
+        md = MarkdownDocumentHandler(document)
+        md.run()
+
+        self.assertTrue(md.meta.get('slug'))
+        #blog = Blog.objects.get(slug=md.meta.get('slug'))
+
 
 
 
